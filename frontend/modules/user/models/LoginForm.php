@@ -1,6 +1,7 @@
 <?php
-namespace common\models;
+namespace frontend\modules\user\models;
 
+use frontend\models\User;
 use Yii;
 use yii\base\Model;
 
