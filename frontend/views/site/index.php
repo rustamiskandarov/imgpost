@@ -48,6 +48,17 @@ $this->title = 'My Yii Application';
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <?php foreach ($users as $user): ?>
+                    <a href="<?php echo \yii\helpers\Url::to(['/user/profile/view', 'nickname' => $user->getNickname()]);?>">
+                        <?php echo $user->username; ?>
+                    </a>
+                    <?php echo $user->email; ?>
+                    <hr>
+                <?php endforeach;?>
+            </div>
+        </div>
 
     </div>
 </div>
