@@ -16,6 +16,7 @@ $this->title = 'Profile';
         <div class="row">
             <div class="col-lg-4">
                 <h4>Ваш логин: <?php echo $user->username;?></h4>
+                <h4>Ваш ник: <?php echo $user->nickname;?></h4>
                 <h4>Ваш email: <?php echo $user->email;?></h4>
             </div>
     </div>
