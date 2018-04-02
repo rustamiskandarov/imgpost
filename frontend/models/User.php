@@ -195,6 +195,6 @@ class User extends ActiveRecord implements IdentityInterface
         if($this->nickname){
             return $this->nickname;
         }
-        return $this->id;
+        return $this->getId();
     }
 }
