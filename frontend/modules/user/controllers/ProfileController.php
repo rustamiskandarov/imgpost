@@ -45,4 +45,11 @@ class ProfileController extends Controller
             $user->save(false);
         }
     }
+
+    public function actionSubscribe(){
+        if(Yii::$app->user->isGuest){
+            return $this->redirect(['default/login']);
+        }
+
+    }
 }

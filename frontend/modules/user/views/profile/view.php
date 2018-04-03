@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\helpers\HtmlPurifier;
 $this->title = 'Profile';
@@ -8,7 +9,7 @@ $this->title = 'Profile';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h3>Добро пожаловать <?php echo Html::encode($user->username);?></h3>
+        <h3>Карточка пользователя <?php echo Html::encode($user->username);?></h3>
 
     </div>
 
@@ -16,11 +17,13 @@ $this->title = 'Profile';
 
         <div class="row">
             <div class="col-lg-4">
-                <h4>Ваш логин: <?php echo Html::encode($user->username);?></h4>
-                <h4>Ваш ник: <?php echo Html::encode($user->nickname);?></h4>
-                <h4>Ваш email: <?php echo Html::encode($user->email);?></h4>
+                <h4>Логин: <?php echo Html::encode($user->username);?></h4>
+                <h4>Ник: <?php echo Html::encode($user->nickname);?></h4>
+                <h4>email: <?php echo Html::encode($user->email);?></h4>
+                <a href="<?php echo Url::to(['/user/profile/subscribe', 'id' => $user->getID()]);?>" class="btn btn-info">Подписаться</a>
+                <a href="<?php echo Url::to(['/user/profile/unsubscribe', 'id' => $user->getID()]);?>" class="btn btn-warning">Отписаться</a>
                 <hr>
-                <p>Немного о себе:</p>
+                <p>О себе:</p>
                 <p><?php echo HTMLPurifier::process($user->about);?></p>
             </div>
     </div>
