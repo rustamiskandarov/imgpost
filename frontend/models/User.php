@@ -29,6 +29,7 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    const USER_DEFAULT_IMAGE = '/image/user-image.jpg';
 
 
     /**
@@ -262,6 +263,13 @@ class User extends ActiveRecord implements IdentityInterface
 
         $ids = $redis->sinter($key1, $key2);
         return User::find()->select('id, username, nickname')->where(['id'=>$ids])->orderBy('username')->asArray()->all();
+    }
+
+    public function getPicture(){
+        if($this->picture){
+            return Yii::$app->storage->getFile($this->picture);
+        }
+        return self::USER_DEFAULT_IMAGE;
     }
 }
 

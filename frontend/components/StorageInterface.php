@@ -5,7 +5,7 @@
  * Date: 05.04.2018
  * Time: 13:56
  */
-namespace frontend\modules\user\components;
+namespace frontend\components;
 
 use yii\web\UploadedFile;
 
