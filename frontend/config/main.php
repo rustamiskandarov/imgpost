@@ -15,6 +15,9 @@ return [
         'user' => [
             'class' => 'frontend\modules\user\Module',
         ],
+        'post' => [
+            'class' => 'frontend\modules\post\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -50,6 +53,7 @@ return [
         'storage' =>[
             'class' => 'frontend\components\Storage',
         ],
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

@@ -24,7 +24,7 @@ $this->title = 'Profile';
         <div class="row">
             <div class="col-lg-4">
                 <img src="<?php echo $user->getPicture();?>" alt="" id="profile-picture">
-                <?php if($currentUser->equals($user)):?>
+                <?php if($currentUser && $currentUser->equals($user)):?>
 
                     <?= FileUpload::widget([
                         'model' => $modelPicture,
