@@ -118,3 +118,13 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.display-none
+{
+    display: none;
+}
+
+.button
+{
+    cursor: pointer;
+}

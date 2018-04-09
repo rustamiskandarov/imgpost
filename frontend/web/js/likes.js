@@ -6,8 +6,8 @@ $(document).ready(function () {
        $.post('/post/default/like', params, function (data) {
             if(data.success){
                 $('.likes-count').html(data.likesCount);
-                //$('.button-like').addClass('disabled');
-                //$('.button-unlike').removeClass('disabled');
+                $('a.button-like').hide();
+                $('a.button-unlike').show();
             };
        });
        return false;
@@ -19,8 +19,8 @@ $(document).ready(function () {
         $.post('/post/default/unlike', params, function (data) {
             if(data.success){
                 $('.likes-count').html(data.likesCount);
-                //$('.button-like').removeClass('disabled');
-                //$('.button-unlike').addClass('disabled');
+                $('a.button-like').show();
+                $('a.button-unlike').hide();
             };
         });
         return false;

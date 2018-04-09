@@ -1,32 +1,29 @@
 <?php
+/* @var $this yii\web\View */
+/* @var $post frontend\models\Post */
+
 use yii\helpers\Html;
+use yii\web\JqueryAsset;
 
 ; ?>
 
 <div class="i">
     <div class="col-md-12">
-        <?php if($post->user): ?>
-        <p>
-            <?php echo Html::encode($post->user->username); ?>
-        </p>
-        <?php endif; ?>
-    </div>
-
-    <div class="col-md-12">
-        <a type="button" class="btn btn-default button-like" aria-label="Left Align" <?php echo ($currentUser && $post->isLikedBy($currentUser)) ? "display-none":""; ?> data-id="<?php echo $post->id; ?>">
-            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-            <span class="likes-count">
+        <span class="likes-count">
                 <?php
                 echo $post->countLikes();
                 ?>
             </span>
+        <a type="button" class="button button-like <?php echo ($currentUser && $post->isLikedBy($currentUser)) ? "display-none" : ""; ?>" aria-label="Left Align" data-id="<?php echo $post->id; ?>">
+            <span class="glyphicon glyphicon-heart-empty aria-hidden="true"" aria-hidden="true"></span>
         </a>
-        <?php echo $post->isLikedBy($currentUser); ?>
-        <?php print_r($currentUser) ; ?>
-        <a type="button" class="btn btn-default button-unlike" aria-label="Left Align" <?php echo ($currentUser && $post->isLikedBy($currentUser))?"":"display-none"; ?> data-id="<?php echo $post->id; ?>"    >
-            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+
+        <a type="button" class="button button-unlike <?php echo ($currentUser && $post->isLikedBy($currentUser)) ? "" : "display-none"; ?>" aria-label="Left Align" data-id="<?php echo $post->id; ?>">
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
         </a>
+
     </div>
+
     <div class="row">
         <div class="col-md-12">
             <img src="<?php echo $post->getImage(); ?>" alt="">
