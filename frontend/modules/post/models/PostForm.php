@@ -7,6 +7,7 @@ namespace frontend\modules\post\models;
  * Date: 07.04.2018
  * Time: 19:55
  */
+use Intervention\Image\ImageManager;
 use Yii;
 use yii\base\Model;
 use frontend\models\Post;
@@ -35,6 +36,19 @@ class PostForm extends Model
     public function __construct(User $user)
     {
         $this->user = $user;
+        $this->on(self::EVENT_AFTER_VALIDATE, [$this, 'resizePicture']);
+    }
+
+    public function resizePicture()
+    {
+        $width = Yii::$app->params['postPicture']['maxWidth'];
+        $height = Yii::$app->params['postPicture']['maxWidth'];
+        $manager = new ImageManager(array('driver'=>'imagick'));
+        $image = $manager->make($this->picture->tempName);
+        $image->resize($width, $height, function ($constraint){
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->save();
     }
 
     public function save(){
