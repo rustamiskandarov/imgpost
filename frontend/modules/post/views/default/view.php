@@ -9,11 +9,6 @@ use yii\web\JqueryAsset;
 
 <div class="i">
     <div class="col-md-12">
-        <span class="likes-count">
-                <?php
-                echo $post->countLikes();
-                ?>
-            </span>
         <a type="button" class="button button-like <?php echo ($currentUser && $post->isLikedBy($currentUser)) ? "display-none" : ""; ?>" aria-label="Left Align" data-id="<?php echo $post->id; ?>">
             <span class="glyphicon glyphicon-heart-empty aria-hidden="true"" aria-hidden="true"></span>
         </a>
@@ -21,7 +16,11 @@ use yii\web\JqueryAsset;
         <a type="button" class="button button-unlike <?php echo ($currentUser && $post->isLikedBy($currentUser)) ? "" : "display-none"; ?>" aria-label="Left Align" data-id="<?php echo $post->id; ?>">
             <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
         </a>
-
+        <span class="likes-count"> Нравиться:
+                <?php
+                echo $post->countLikes();
+                ?>
+            </span>
     </div>
 
     <div class="row">

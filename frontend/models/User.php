@@ -271,5 +271,17 @@ class User extends ActiveRecord implements IdentityInterface
         }
         return self::USER_DEFAULT_IMAGE;
     }
+
+    public function getFeed(int $limit)
+    {
+        $order = ['post_created_at' => SORT_DESC];
+        return $this->hasMany(Feed::className(),['user_id' => 'id'])->orderBy($order)->limit($limit)->all();
+    }
+
+    public function likesPost(int $postId)
+    {
+        $redis = Yii::$app->redis;
+        return (bool) $redis->sismember("user:{$this->getId()}:likes", $postId);
+    }
 }
 

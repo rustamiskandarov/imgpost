@@ -38,7 +38,7 @@ $this->title = 'Profile';
                         ],
                     ]); ?>
                 <?php else:?>
-
+                <br>
                 <a href="<?php echo Url::to(['/user/profile/subscribe', 'id' => $user->getID()]);?>" class="btn btn-info">Подписаться</a>
                 <a href="<?php echo Url::to(['/user/profile/unsubscribe', 'id' => $user->getID()]);?>" class="btn btn-warning">Отписаться</a>
 

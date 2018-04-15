@@ -49,4 +49,14 @@ class Feed extends ActiveRecord
             'post_created_at' => 'Post Created At',
         ];
     }
+
+    /**
+     * @return mixed
+     */
+    public function countLikes()
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        return $redis->scard("post:{$this->post_id}:likes");
+    }
 }

@@ -38,8 +38,22 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $users = User::find()->all();
+        if(Yii::$app->user->isGuest){
+            return $this->redirect('/user/default/login');
+        }
+        $currentUser = Yii::$app->user->identity;
+        $limit = Yii::$app->params['feedPostLimit'];
+        $feedItems = $currentUser->getFeed($limit);
         return $this->render('index',[
+            'currentUser' =>$currentUser,
+            'feedItems' =>$feedItems,
+        ]);
+    }
+
+    public function actionUsersList()
+    {
+        $users = User::find()->all();
+        return $this->render('users-list',[
             'users'=>$users
         ]);
     }

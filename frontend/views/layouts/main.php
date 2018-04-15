@@ -36,18 +36,19 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'На главную', 'url' => ['/site/index']],
+        ['label' => 'Люди', 'url' => ['/site/users-list']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/user/default/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/user/default/login']];
+        $menuItems[] = ['label' => 'Зарегистрироваться', 'url' => ['/user/default/signup']];
+        $menuItems[] = ['label' => 'Войти', 'url' => ['/user/default/login']];
     } else {
-        $menuItems[] = ['label' => 'My profile', 'url' => ['/user/profile/view', 'nickname' => Yii::$app->user->identity->getNickname()]];
-        $menuItems[] = ['label' => 'Create post', 'url' => ['/post/default/create']];
+        $menuItems[] = ['label' => 'Мой профиль', 'url' => ['/user/profile/view', 'nickname' => Yii::$app->user->identity->getNickname()]];
+        $menuItems[] = ['label' => 'Создать пост', 'url' => ['/post/default/create']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/user/default/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Выйти (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
