@@ -34,7 +34,7 @@ FontAwesomeAsset::register($this);
                 <!-- Button for smallest screens -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
                             class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-                <a class="navbar-brand" href="index.html"><img src="image/logo.png" alt="imagepost"></a>
+                <a class="navbar-brand" href="index.html"><img src="/image/logo.png" alt="imagepost"></a>
             </div>
             <div class="navbar-collapse collapse">
                 <?php
@@ -55,6 +55,7 @@ FontAwesomeAsset::register($this);
                             ['class' => 'btn btn-link logout']
                         )
                         . Html::endForm()
+                        .'<i class ="fas fa-sign-out-alt">sdfsdfsdfdfsd</i>'
                         . '</li>';
                 }
                 echo Nav::widget([
@@ -68,29 +69,14 @@ FontAwesomeAsset::register($this);
     </div>
     <!-- /.navbar -->
 
-<!-- Header -->
-<header id="head">
-    <div class="container">
-        <div class="row">
-            <h1 class="lead">Делитесь фото, всегда и везде</h1>
-            <p class="tagline">free business bootstrap template by <a
-                        href="http://www.gettemplate.com/?utm_source=progressus&amp;utm_medium=template&amp;utm_campaign=progressus">GetTemplate</a>
-            </p>
-            <p><a class="btn btn-default btn-lg" role="button">войти</a> <a class="btn btn-action btn-lg"
-                                                                                role="button">зарегистриоваться</a></p>
-        </div>
-    </div>
-</header>
-<!-- /Header -->
 
 
-<div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-</div>
+
+<?= Breadcrumbs::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+]) ?>
+<?= Alert::widget() ?>
+<?= $content ?>
 
 
 <footer id="footer" class="top-space">

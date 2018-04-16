@@ -9,9 +9,9 @@ use yii\web\AssetBundle;
  */
 class FontAwesomeAsset extends AssetBundle
 {
-    public $basePath = '@bower/font-awesome';
+    public $basePath = '@bower/font-awesome/web-fonts-with-css';
     public $css = [
-        'web-fonts-with-css/css/fontawesome.css',
+        'css/fontawesome.css',
     ];
 
 }

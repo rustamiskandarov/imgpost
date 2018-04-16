@@ -7,39 +7,62 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
+$this->title = 'Вход на сайт';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>Please fill out the following fields to login:</p>
-
     <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+        <!-- Article main content -->
+        <div class="col-xs-12 maincontent">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Войдите в свой аккаунт.</h3>
+                        <hr>
+                            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
-                <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['default/request-password-reset']) ?>.
+                            <div class="top-margin">
+                                <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+                            </div>
+                            <div class="top-margin">
+                                <?= $form->field($model, 'password')->passwordInput() ?>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
+                                </div>
+                                <div class="col-lg-4">
+                                    <?= yii\authclient\widgets\AuthChoice::widget([
+                                        'baseAuthUrl' => ['/user/default/auth'],
+                                        'popupMode' => false,
+                                    ]) ?>
+                                </div>
+                            </div>
+                            <div style="color:#999;margin:1em 0">
+                                Забыли пароль? <?= Html::a('Восстановить', ['default/request-password-reset']) ?>.
+                            </div>
+
+                            <div class="form-group">
+                                <?= Html::submitButton('Войти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                            </div>
+
+                            <?php ActiveForm::end(); ?>
+
+
+
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
+            </div>
 
-            <?php ActiveForm::end(); ?>
         </div>
-        <div class="col-lg-3">
-            <?= yii\authclient\widgets\AuthChoice::widget([
-                'baseAuthUrl' => ['/user/default/auth'],
-                'popupMode' => false,
-            ]) ?>
-        </div>
+        <!-- /Article -->
+
     </div>
+
 </div>

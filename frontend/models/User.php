@@ -31,6 +31,16 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
     const USER_DEFAULT_IMAGE = '/image/user-image.jpg';
 
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Имя пользователя',
+            'email' => 'Электронная почта',
+            'nickname' => 'Ник',
+            'about' => 'О себе',
+        ];
+    }
 
     /**
      * {@inheritdoc}

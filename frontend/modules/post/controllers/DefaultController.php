@@ -37,7 +37,7 @@ class DefaultController extends Controller
 
             if($model->save()){
 
-                Yii::$app->session->setFlash('success', 'Post created');
+                Yii::$app->session->setFlash('success', 'Пост добавлен успешно');
                 return $this->goHome();
             }
         }

@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `feed`.
  */
-class m180412_142051_create_feed_table extends Migration
+class m180416_122751_create_feed_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ class m180412_142051_create_feed_table extends Migration
             'user_id' => $this->integer(),
             'author_id' => $this->integer(),
             'author_name' => $this->string(),
-            'author_nickname' => $this->integer(70),
+            'author_nickname' => $this->string(),
             'author_picture' => $this->string(),
             'post_id' => $this->integer(),
             'post_filename' => $this->string()->notNull(),
