@@ -14,12 +14,7 @@ $this->title = 'Пльзователь';
 ?>
 <div class="container">
     <div class="site-index">
-
-        <div class="jumbotron">
-            <h3>Карточка пользователя <?php echo Html::encode($user->username);?></h3>
-
-        </div>
-
+        <h3>Пользовател: <?php echo Html::encode($user->username);?></h3>
         <div class="body-content">
 
             <div class="row">
@@ -48,20 +43,22 @@ $this->title = 'Пльзователь';
                     <h4>Ник: <?php echo Html::encode($user->nickname);?></h4>
                     <h4>email: <?php echo Html::encode($user->email);?></h4>
                     <hr>
-                    <p>О себе:</p>
-                    <p><?php echo HTMLPurifier::process($user->about);?></p>
-                    <hr>
+                    <?php if($user->about): ?>
+                        <p>О себе:</p>
+                        <p><?php echo HTMLPurifier::process($user->about);?></p>
+                        <hr>
+                    <?php endif; ?>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12">
-                    <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <a class="btn btn-default subscribe-info subscribe-info_insubscribe" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         <?php echo $user->countSubscriptions()?> Подписчиков
                     </a>
-                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                    <a class="btn btn-default subscribe-info subscribe-info_unsubscribe" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
                         <?php echo $user->countFollowers()?> Подписавшихся
-                    </button>
+                    </a>
                     <div class="collapse" id="collapseExample">
                         <div class="well">
                             <?php foreach ($user->getSubscriptions() as $subscription): ?>

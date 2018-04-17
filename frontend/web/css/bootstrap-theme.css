@@ -3,9 +3,9 @@
 /*******************************/
 .navbar-inverse {
 	border-radius: 0;
-	background:rgba(0, 0, 0, .8);
+	background:rgba(0, 0, 0, .6);
 	border-bottom:1px solid rgba(255, 255, 255, 0.20);
-	min-height:100px; padding-top:25px; margin-bottom:0;}
+	min-height:70px; padding-top:15px; margin-bottom:0;}
 
 .navbar-inverse *:focus { outline: 0; }
 @media (max-width: 767px) {
@@ -13,7 +13,12 @@
 }
 
 .navbar-inverse .navbar-nav > li > a,
-.navbar-inverse .navbar-nav > .open ul > a { color:rgba(255, 255, 255, .4); }
+.navbar-inverse .navbar-nav > .logout,
+.navbar-inverse .navbar-nav > .open ul > a {
+	color: rgba(255, 255, 255, .8);
+	font-size: 1.6rem;
+}
+
 
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover, 
@@ -46,7 +51,7 @@
 .navbar-nav .dropdown-menu > .active > a,
 .navbar-nav .dropdown-menu > .active > a:focus { background: none; color:#fff; }
 
-.navbar-nav .btn { border:1px solid rgba(255, 255, 255, .2); margin-left:5px; margin-top:5px; padding-top:10px; padding-bottom:10px; }
+.navbar-nav .btn { border:1px solid rgba(255, 255, 255, .2); margin-top: 5px; padding-top:10px; padding-bottom:10px; }
 
 .navbar-nav a.btn:focus, 
 .navbar-nav a.btn:hover  { border:1px solid rgba(255,255,255,.6); }

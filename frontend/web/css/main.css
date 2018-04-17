@@ -79,4 +79,20 @@ img.pull-left { margin-right: 10px; }
 		.footer2 p { margin: 0; }
 
 	.widget-simplenav { margin-left:-5px; }		
-	.widget-simplenav a{ margin:0 5px; }		
+	.widget-simplenav a{ margin:0 5px; }
+
+i{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.navbar-nav .btn {
+	font-size: 1.6rem;
+	color: rgba(255, 255, 255, .6);
+}
+
+.subscribe-info{
+	border: none;
+	padding: 10px;
+
+}

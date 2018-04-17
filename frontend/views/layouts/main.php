@@ -10,9 +10,9 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use frontend\assets\FontAwesomeAsset;
 use common\widgets\Alert;
+use rmrevin\yii\fontawesome\FAS;
 
 AppAsset::register($this);
-FontAwesomeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -39,28 +39,29 @@ FontAwesomeAsset::register($this);
             <div class="navbar-collapse collapse">
                 <?php
                 $menuItems = [
-                    ['label' => 'На главную', 'url' => ['/site/index']],
+                    ['label' => FAS::icon('home').'На главную', 'url' => ['/site/index']],
                     ['label' => 'Люди', 'url' => ['/site/users-list']],
                 ];
                 if (Yii::$app->user->isGuest) {
                     $menuItems[] = ['label' => 'Зарегистрироваться', 'url' => ['/user/default/signup']];
-                    $menuItems[] = ['label' => 'Войти', 'url' => ['/user/default/login']];
+                    $menuItems[] = ['label' => 'Войти'. FAS::icon('sign-in-alt'), 'url' => ['/user/default/login']];
                 } else {
                     $menuItems[] = ['label' => 'Мой профиль', 'url' => ['/user/profile/view', 'nickname' => Yii::$app->user->identity->getNickname()]];
                     $menuItems[] = ['label' => 'Создать пост', 'url' => ['/post/default/create']];
                     $menuItems[] = '<li>'
                         . Html::beginForm(['/user/default/logout'], 'post')
                         . Html::submitButton(
-                            'Выйти (' . Yii::$app->user->identity->username . ')',
+                            'Выйти (' . Yii::$app->user->identity->username . ')'. FAS::icon('sign-out-alt'),
                             ['class' => 'btn btn-link logout']
                         )
                         . Html::endForm()
-                        .'<i class ="fas fa-sign-out-alt">sdfsdfsdfdfsd</i>'
                         . '</li>';
                 }
+
                 echo Nav::widget([
-                    'options' => ['class' => 'nav navbar-nav pull-right'],
+                    'options' => ['class' => 'nav navbar-nav pull-right sitemenu'],
                     'items' => $menuItems,
+                    'encodeLabels' => false,
                 ]);
                 ; ?>
 
@@ -83,6 +84,11 @@ FontAwesomeAsset::register($this);
 
     <div class="footer1">
         <div class="container">
+            <div class="row center">
+                <a href="" class="back-to-top">
+                    <i class ="fas fa-arrow-alt-circle-up">НА НАЧАЛО</i>
+                </a>
+            </div>
             <div class="row">
 
                 <div class="col-md-3 widget">
