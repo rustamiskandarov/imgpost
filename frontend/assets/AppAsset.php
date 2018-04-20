@@ -20,6 +20,7 @@ class AppAsset extends AssetBundle
         'js/headroom.min.js',
         'js/jQuery.headroom.min.js',
         'js/template.js',
+        'js/complaints.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

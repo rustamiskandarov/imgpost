@@ -100,4 +100,16 @@ class Post extends ActiveRecord
         $redis = Yii::$app->redis;
         return $redis->sismember("post:{$this->getId()}:likes", $user->getId());
     }
+
+    public function Complain(User $user)
+    {
+        $redis = Yii::$app->redis;
+        $key = "post:{$this->getId()}:complaints";
+
+        if(!$redis->sismember($key, $user->getId())){
+            $redis->sadd($key, $user->getId());
+            $this->complaints++;
+            return $this->save(false, ['complaints']);
+        }
+    }
 }

@@ -37,23 +37,28 @@ $this->title = 'Imagepost';
                                      id="">
                             </a>
                             <div class="col-md-12">
-                                <a type="button"
-                                   class="button button-like <?php echo ($currentUser && $currentUser->likesPost($post->post_id)) ? "display-none" : ""; ?>"
+                                <a type="button" class="button button-like <?php echo ($currentUser && $currentUser->likesPost($post->post_id)) ? "display-none" : ""; ?>"
                                    aria-label="Left Align" data-id="<?php echo $post->post_id; ?>">
-                                    <span class="glyphicon glyphicon-heart-empty aria-hidden=" true"" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-heart-empty aria-hidden=" aria-hidden="true"></span>
                                 </a>
 
-                                <a type="button"
-                                   class="button button-unlike <?php echo ($currentUser && $currentUser->likesPost($post->post_id)) ? "" : "display-none"; ?>"
+                                <a type="button" class="button button-unlike <?php echo ($currentUser && $currentUser->likesPost($post->post_id)) ? "" : "display-none"; ?>"
                                    aria-label="Left Align" data-id="<?php echo $post->post_id; ?>">
                                     <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                                 </a>
                                 <span> Нравиться </span>
                                 <span class="likes-count">
-                            <?php
-                            echo $post->countLikes();
-                            ?>
-                        </span>
+                                    <?php echo $post->countLikes();?>
+                                </span>
+                                <?php if(!$post->isReported($currentUser)):; ?>
+                                    <a class="btn button-complain" data-id="<?php echo $post->post_id; ?>">
+                                        <i class="fas fa-thumbs-down"></i> Пожаловаться
+                                        <i class="fas fa-spinner display-none icon-preloader"></i>
+                                    </a>
+                                <?php else: ?>
+                                    <span>Ваша жалоба направлена</span>
+                                <?php endif; ?>
+
                             </div>
                             <br>
                             <a href="<?php echo Url::to(['/user/profile/view', 'nickname' => ($post->author_nickname)]); ?>"><?php echo $post->author_nickname;; ?></a>
